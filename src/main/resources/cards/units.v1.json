@@ -1,0 +1,72 @@
+[
+  {
+    "id": "UNSC-001",
+    "name": "Marine Fireteam",
+    "version": "1.0.0",
+    "faction": "UNSC",
+    "cardType": "UNIT",
+    "rarity": "COMMON",
+    "deckLimit": 3,
+    "isLegendary": false,
+    "cost": { "supply": 1, "battery": 0 },
+    "tags": ["INFANTRY"],
+    "keywords": [
+      { "name": "BALLISTIC" },
+      { "name": "SQUAD" }
+    ],
+    "stats": { "attack": 1, "shieldCap": 0, "healthCap": 2 },
+    "abilities": [
+      {
+        "id": "a_squad_bonus",
+        "trigger": "DAMAGE_CALC_STARTED",
+        "priority": 240,
+        "limitPerTurn": 99,
+        "conditions": [
+          { "op": "SOURCE_IN_LANE_WITH_ALLY_TAG", "args": ["INFANTRY", "1"] }
+        ],
+        "effects": [
+          { "type": "MODIFY_DAMAGE", "target": "SOURCE", "params": { "delta": 1, "maxBonus": 2 } }
+        ]
+      }
+    ],
+    "vesselStats": null,
+    "tokenTemplate": null
+  },
+  {
+    "id": "FLD-002",
+    "name": "Combat Form",
+    "version": "1.0.0",
+    "faction": "FLOOD",
+    "cardType": "UNIT",
+    "rarity": "COMMON",
+    "deckLimit": 3,
+    "isLegendary": false,
+    "cost": { "supply": 2, "battery": 0 },
+    "tags": ["INFANTRY"],
+    "keywords": [
+      { "name": "INFECT" }
+    ],
+    "stats": { "attack": 2, "shieldCap": 0, "healthCap": 2 },
+    "abilities": [
+      {
+        "id": "a_infect_on_kill",
+        "trigger": "KILL_OCCURRED",
+        "priority": 220,
+        "limitPerTurn": 99,
+        "conditions": [
+          { "op": "SOURCE_HAS_KEYWORD", "args": ["INFECT"] },
+          { "op": "TARGET_NOT_TAG", "args": ["VEHICLE"] }
+        ],
+        "effects": [
+          {
+            "type": "SUMMON_TOKEN",
+            "target": "SOURCE_LANE_BACKLINE",
+            "params": { "tokenId": "TOKEN-COMBAT-FORM", "count": 1 }
+          }
+        ]
+      }
+    ],
+    "vesselStats": null,
+    "tokenTemplate": null
+  }
+]

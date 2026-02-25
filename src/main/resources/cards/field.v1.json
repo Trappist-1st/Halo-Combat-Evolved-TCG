@@ -1,0 +1,36 @@
+[
+	{
+		"id": "FLD-FIELD-001",
+		"name": "Firebase Echo",
+		"version": "1.0.0",
+		"faction": "UNSC",
+		"cardType": "FIELD",
+		"rarity": "RARE",
+		"deckLimit": 2,
+		"isLegendary": false,
+		"cost": { "supply": 3, "battery": 0 },
+		"tags": ["LOCATION"],
+		"keywords": [],
+		"stats": null,
+		"abilities": [],
+		"vesselStats": null,
+		"tokenTemplate": null
+	},
+	{
+		"id": "FLD-FIELD-002",
+		"name": "Infested Zone",
+		"version": "1.0.0",
+		"faction": "FLOOD",
+		"cardType": "FIELD",
+		"rarity": "RARE",
+		"deckLimit": 2,
+		"isLegendary": false,
+		"cost": { "supply": 3, "battery": 0 },
+		"tags": ["LOCATION"],
+		"keywords": [],
+		"stats": null,
+		"abilities": [],
+		"vesselStats": null,
+		"tokenTemplate": null
+	}
+]

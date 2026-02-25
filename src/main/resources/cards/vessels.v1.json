@@ -1,0 +1,48 @@
+[
+  {
+    "id": "VES-UNSC-SAVANNAH",
+    "name": "UNSC Savannah",
+    "version": "1.0.0",
+    "faction": "UNSC",
+    "cardType": "VESSEL",
+    "rarity": "RARE",
+    "deckLimit": 2,
+    "isLegendary": false,
+    "cost": { "supply": 4, "battery": 0 },
+    "tags": ["VESSEL", "ESCORT"],
+    "keywords": [
+      { "name": "POINT_DEFENSE", "value": 1 },
+      { "name": "TARGET_LINK" }
+    ],
+    "stats": { "attack": 0, "shieldCap": 3, "healthCap": 5 },
+    "abilities": [
+      {
+        "id": "a_chaff",
+        "trigger": "ORBITAL_STRIKE_DECLARED",
+        "priority": 180,
+        "limitPerTurn": 99,
+        "conditions": [
+          { "op": "SAME_LANE", "args": [] },
+          { "op": "IS_ENEMY_SOURCE", "args": [] }
+        ],
+        "effects": [
+          {
+            "type": "ROLL_MISS_CHANCE",
+            "target": "EVENT",
+            "params": { "chancePct": 50 }
+          }
+        ]
+      }
+    ],
+    "vesselStats": {
+      "tonnageClass": "ESCORT",
+      "hangars": 1,
+      "payloadType": "MIXED",
+      "shieldHardening": 0,
+      "pointDefense": 1,
+      "multiSection": false,
+      "sections": []
+    },
+    "tokenTemplate": null
+  }
+]

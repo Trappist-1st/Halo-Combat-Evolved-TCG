@@ -1,0 +1,12 @@
+{
+  "cardDataVersion": "1.0.0",
+  "schemaVersion": "1.0.0",
+  "cardFiles": [
+    "units.v1.json",
+    "armory.v1.json",
+    "tactical.v1.json",
+    "field.v1.json",
+    "vessels.v1.json",
+    "token-templates.v1.json"
+  ]
+}

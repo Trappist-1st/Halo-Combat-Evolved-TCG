@@ -1,0 +1,21 @@
+{
+  "deckId": "p1_unsc_flood_demo_v1",
+  "owner": "player-1",
+  "cards": [
+    { "id": "UNSC-001", "count": 3 },
+    { "id": "FLD-002", "count": 3 },
+    { "id": "VES-UNSC-SAVANNAH", "count": 2 },
+    { "id": "ARM-001", "count": 3 },
+    { "id": "ARM-002", "count": 3 },
+    { "id": "ARM-003", "count": 3 },
+    { "id": "ARM-004", "count": 3 },
+    { "id": "TAC-001", "count": 3 },
+    { "id": "TAC-002", "count": 3 },
+    { "id": "TAC-003", "count": 3 },
+    { "id": "TAC-004", "count": 3 },
+    { "id": "TAC-005", "count": 2 },
+    { "id": "TAC-006", "count": 2 },
+    { "id": "FLD-FIELD-001", "count": 2 },
+    { "id": "FLD-FIELD-002", "count": 2 }
+  ]
+}

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "TOKEN-COMBAT-FORM",
+    "name": "Combat Form Token",
+    "version": "1.0.0",
+    "faction": "FLOOD",
+    "cardType": "TOKEN",
+    "rarity": "COMMON",
+    "deckLimit": 0,
+    "isLegendary": false,
+    "cost": { "supply": 0, "battery": 0 },
+    "tags": ["INFANTRY"],
+    "keywords": [
+      { "name": "INFECT" }
+    ],
+    "stats": { "attack": 1, "shieldCap": 0, "healthCap": 1 },
+    "abilities": [],
+    "vesselStats": null,
+    "tokenTemplate": "TOKEN-COMBAT-FORM"
+  }
+]
