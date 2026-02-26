@@ -91,6 +91,24 @@ public class PlayerState {
         this.currentSupply = this.supplyCap;
     }
 
+    public void grantSupply(int amount) {
+        if (amount <= 0) {
+            return;
+        }
+        currentSupply = Math.min(supplyCap, currentSupply + amount);
+    }
+
+    public boolean consumeSupply(int amount) {
+        if (amount <= 0) {
+            return true;
+        }
+        if (currentSupply < amount) {
+            return false;
+        }
+        currentSupply -= amount;
+        return true;
+    }
+
     public List<CardInstance> draw(int count) {
         List<CardInstance> drawn = new ArrayList<>();
         for (int i = 0; i < count; i++) {

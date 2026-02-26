@@ -1,0 +1,197 @@
+{
+  "cards": [
+    {
+      "id": "FOR-MANUFACTORY-001",
+      "name": "哨兵制造厂 Sentinel Manufactory",
+      "cardType": "FIELD",
+      "faction": "FORERUNNER",
+      "rarity": "RARE",
+      "cost": 4,
+      "tags": ["FORERUNNER", "STRUCTURE", "AUTOMATED"],
+      "description": "每回合开始时生成2个哨兵Token。哨兵回到此Lane时，回合结束自动回满血。",
+      "keywords": [],
+      "effectText": "At turn start: Generate 2 Sentinel tokens. Sentinels in this lane are auto-repaired at turn end."
+    },
+    {
+      "id": "FOR-KNIGHT-001",
+      "name": "普罗米修斯骑士 Promethean Knight",
+      "cardType": "UNIT",
+      "faction": "FORERUNNER",
+      "rarity": "EPIC",
+      "cost": 6,
+      "tags": ["FORERUNNER", "PROMETHEAN", "DIGITAL_WARRIOR"],
+      "stats": {
+        "attack": 5,
+        "healthCap": 8,
+        "shieldCap": 3
+      },
+      "keywords": [
+        {"name": "HARDLIGHT_WEAPON", "value": null},
+        {"name": "DATA_RECONSTITUTION", "value": null}
+      ],
+      "description": "携带1个观察者。受伤时观察者弹出维修。死亡时生成数据残影，可被观察者复活。",
+      "effectText": "Carries 1 Watcher. On damage: Eject Watcher for repair. On death: Leave Data Remnant (revivable)."
+    },
+    {
+      "id": "FOR-CRAWLER-001",
+      "name": "普罗米修斯爬行者 Promethean Crawler",
+      "cardType": "UNIT",
+      "faction": "FORERUNNER",
+      "rarity": "COMMON",
+      "cost": 2,
+      "tags": ["FORERUNNER", "PROMETHEAN", "SWARM"],
+      "stats": {
+        "attack": 2,
+        "healthCap": 3,
+        "shieldCap": 0
+      },
+      "keywords": [
+        {"name": "CLIMB", "value": null}
+      ],
+      "description": "可以跳过敌方前排，直接攻击后排辅助单位。集群作战时效率更高。",
+      "effectText": "Bypass Frontline: Can attack backline directly."
+    },
+    {
+      "id": "FOR-WATCHER-001",
+      "name": "普罗米修斯观察者 Promethean Watcher",
+      "cardType": "UNIT",
+      "faction": "FORERUNNER",
+      "rarity": "UNCOMMON",
+      "cost": 3,
+      "tags": ["FORERUNNER", "PROMETHEAN", "SUPPORT"],
+      "stats": {
+        "attack": 1,
+        "healthCap": 2,
+        "shieldCap": 2
+      },
+      "keywords": [
+        {"name": "INTERCEPT", "value": null},
+        {"name": "REVIVE", "value": 3}
+      ],
+      "description": "可以拦截手雷和实体炮弹。每3回合可以复活1个被摧毁的普罗米修斯骑士。",
+      "effectText": "Intercept projectiles. Every 3 turns: Revive 1 destroyed Knight from Data Remnant."
+    },
+    {
+      "id": "FOR-SENTINEL-AGGRESSOR",
+      "name": "构造者哨兵 Aggressor Sentinel",
+      "cardType": "TOKEN",
+      "faction": "FORERUNNER",
+      "rarity": "TOKEN",
+      "cost": 0,
+      "tags": ["FORERUNNER", "SENTINEL", "AUTOMATED"],
+      "stats": {
+        "attack": 2,
+        "healthCap": 2,
+        "shieldCap": 0
+      },
+      "keywords": [
+        {"name": "BEAM_TRACKING", "value": null},
+        {"name": "SWARM_INTELLIGENCE", "value": null}
+      ],
+      "description": "基础哨兵单位。光束追踪：攻击不会落空。多个哨兵在同Lane时攻击力叠加。",
+      "effectText": "Beam Tracking: Never miss. Swarm: +1.5 damage per Sentinel in lane."
+    },
+    {
+      "id": "FOR-SENTINEL-SUPER",
+      "name": "超级哨兵 Super Sentinel",
+      "cardType": "UNIT",
+      "faction": "FORERUNNER",
+      "rarity": "RARE",
+      "cost": 5,
+      "tags": ["FORERUNNER", "SENTINEL", "ANTI_AIR"],
+      "stats": {
+        "attack": 6,
+        "healthCap": 5,
+        "shieldCap": 2
+      },
+      "keywords": [
+        {"name": "ANTI_AIR", "value": null},
+        {"name": "HEAVY_LASER", "value": null}
+      ],
+      "description": "专门对付轨道层舰船的防空哨兵。对飞行单位和舰船造成双倍伤害。",
+      "effectText": "Anti-Air: Double damage to orbital/air units."
+    },
+    {
+      "id": "FOR-COMPOSER-LAB",
+      "name": "合成器工厂 Composer Laboratory",
+      "cardType": "FIELD",
+      "faction": "FORERUNNER",
+      "rarity": "LEGENDARY",
+      "cost": 7,
+      "tags": ["FORERUNNER", "STRUCTURE", "COMPOSER"],
+      "description": "收集敌方阵亡的生物单位数据。消耗5个数据可将1个哨兵升级为普罗米修斯骑士（需3回合）。",
+      "keywords": [],
+      "effectText": "Collect biological data on enemy deaths. Spend 5 data: Upgrade 1 Sentinel to Knight (3 turns)."
+    },
+    {
+      "id": "FOR-HALO-INDEX-ALPHA",
+      "name": "索引器-阿尔法 Halo Index Alpha",
+      "cardType": "TACTICAL",
+      "faction": "FORERUNNER",
+      "rarity": "LEGENDARY",
+      "cost": 5,
+      "tags": ["FORERUNNER", "INDEX", "HALO_ARRAY"],
+      "description": "环带协议的一部分。收集3个索引器并在地标停留3回合，可发射局部环带脉冲清除该Lane所有生物单位。",
+      "keywords": [],
+      "effectText": "Part of Halo Array Protocol. Collect 3 indices + 3 turns at objective = Fire pulse."
+    },
+    {
+      "id": "FOR-HARDLIGHT-RIFLE",
+      "name": "硬光步枪 Hardlight Rifle",
+      "cardType": "ARMORY",
+      "faction": "FORERUNNER",
+      "rarity": "RARE",
+      "cost": 3,
+      "tags": ["FORERUNNER", "HARDLIGHT", "WEAPON"],
+      "description": "攻击前排单位时，30%伤害穿透到后排。可切换射击模式。",
+      "keywords": [
+        {"name": "PENETRATION", "value": 30}
+      ],
+      "effectText": "Penetration 30%: Damage overflow to backline when attacking frontline."
+    },
+    {
+      "id": "FOR-SLIPSPACE-GATE",
+      "name": "跃迁门 Slipspace Gate",
+      "cardType": "FIELD",
+      "faction": "FORERUNNER",
+      "rarity": "EPIC",
+      "cost": 5,
+      "tags": ["FORERUNNER", "SLIPSPACE", "PORTAL"],
+      "description": "建立两个Lane之间的空间连接。单位可以瞬间从一个Lane传送到另一个Lane（冷却2回合）。",
+      "keywords": [],
+      "effectText": "Establish portal between 2 lanes. Teleport units instantly (2 turn cooldown)."
+    },
+    {
+      "id": "FOR-GRAVITY-WELL",
+      "name": "重力井 Gravity Well Projector",
+      "cardType": "FIELD",
+      "faction": "FORERUNNER",
+      "rarity": "RARE",
+      "cost": 4,
+      "tags": ["FORERUNNER", "GRAVITY", "INTERCEPTION"],
+      "description": "拦截该Lane的敌方空投单位。被拦截的单位不会损毁，而是被弹回对方手牌。",
+      "keywords": [],
+      "effectText": "Intercept enemy airdrops. Intercepted units return to opponent's hand."
+    },
+    {
+      "id": "FOR-MONITOR-343",
+      "name": "343罪恶火花 343 Guilty Spark",
+      "cardType": "UNIT",
+      "faction": "FORERUNNER",
+      "rarity": "LEGENDARY",
+      "cost": 8,
+      "tags": ["FORERUNNER", "MONITOR", "AI"],
+      "stats": {
+        "attack": 3,
+        "healthCap": 12,
+        "shieldCap": 5
+      },
+      "keywords": [
+        {"name": "COMMAND_NODE", "value": null},
+        {"name": "SENTINEL_COORDINATOR", "value": null}
+      ],
+      "description": "指挥节点。所有哨兵命中率+50%，攻击力+2。销毁后所有哨兵命中率下降50%。",
+      "effectText": "Command Node: All Sentinels +50% accuracy, +2 damage. If destroyed: Sentinels -50% accuracy."
+    }
+  ]
+}

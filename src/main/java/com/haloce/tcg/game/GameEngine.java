@@ -3,6 +3,7 @@ package com.haloce.tcg.game;
 import com.haloce.tcg.card.loader.CardRepository;
 import com.haloce.tcg.card.model.CardDef;
 import com.haloce.tcg.card.model.CardType;
+import com.haloce.tcg.card.model.Faction;
 import com.haloce.tcg.card.runtime.CardInstance;
 import com.haloce.tcg.core.event.DeterministicEventBus;
 import com.haloce.tcg.core.event.EventBus;
@@ -11,6 +12,7 @@ import com.haloce.tcg.deck.model.DeckEntry;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,6 +63,7 @@ public class GameEngine {
 
         LinkedHashMap<String, PlayerState> playersById = new LinkedHashMap<>();
         Map<String, String> teamByPlayer = new LinkedHashMap<>();
+        Map<String, Faction> factionByPlayer = new LinkedHashMap<>();
         for (PlayerSeat seat : seats) {
             if (seat == null || seat.playerId() == null || seat.playerId().isBlank()) {
                 throw new IllegalArgumentException("Invalid player setup");
@@ -72,6 +75,7 @@ public class GameEngine {
             deckValidator.validate(seat.deck(), cardRepository);
             List<CardInstance> deckInstances = createDeckInstances(seat.playerId(), seat.deck().cards());
             playersById.put(seat.playerId(), new PlayerState(seat.playerId(), DEFAULT_BASE_HEALTH, deckInstances));
+            factionByPlayer.put(seat.playerId(), inferDominantFaction(seat.deck().cards()));
 
             String teamId = seat.teamId();
             if (teamId == null || teamId.isBlank()) {
@@ -80,9 +84,31 @@ public class GameEngine {
             teamByPlayer.put(seat.playerId(), teamId);
         }
 
-        GameStateManager stateManager = new GameStateManager(eventBus, cardRepository, playersById, mode, teamByPlayer);
+        GameStateManager stateManager = new GameStateManager(
+                eventBus,
+                cardRepository,
+                playersById,
+                mode,
+                teamByPlayer,
+                factionByPlayer
+        );
         stateManager.startGame();
         return stateManager;
+    }
+
+    private Faction inferDominantFaction(List<DeckEntry> entries) {
+        Map<Faction, Integer> countByFaction = new LinkedHashMap<>();
+        for (DeckEntry entry : entries) {
+            CardDef def = cardRepository.get(entry.id());
+            if (def == null || def.faction() == null) {
+                continue;
+            }
+            countByFaction.merge(def.faction(), entry.count(), Integer::sum);
+        }
+        return countByFaction.entrySet().stream()
+                .max(Comparator.comparingInt(Map.Entry::getValue))
+                .map(Map.Entry::getKey)
+                .orElse(Faction.NEUTRAL);
     }
 
     private static void validateModeSetup(GameMode mode, List<PlayerSeat> seats) {
