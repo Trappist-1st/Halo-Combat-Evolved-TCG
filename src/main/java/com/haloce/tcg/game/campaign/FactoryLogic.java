@@ -6,6 +6,7 @@ import com.haloce.tcg.card.runtime.CardInstance;
  * Manages the production queue for "Factory" units (e.g. Carrier Ships).
  */
 public class FactoryLogic {
+    @SuppressWarnings("unused")
     private final CardInstance parentVessel;
     private final String spawnTokenId;
     private final int spawnInterval;

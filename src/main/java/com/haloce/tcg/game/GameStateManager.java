@@ -2,9 +2,11 @@ package com.haloce.tcg.game;
 
 import com.haloce.tcg.card.loader.CardRepository;
 import com.haloce.tcg.card.model.Faction;
+import com.haloce.tcg.card.model.KeywordInstance;
 import com.haloce.tcg.card.runtime.CardInstance;
 import com.haloce.tcg.combat.DamageResolver;
 import com.haloce.tcg.combat.DamageResult;
+import com.haloce.tcg.combat.DamageType;
 import com.haloce.tcg.combat.InMemoryCombatStateStore;
 import com.haloce.tcg.combat.listeners.CoverMitigationListener;
 import com.haloce.tcg.core.event.DiplomacyListener;
@@ -23,13 +25,12 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class GameStateManager {
     private final EventBus eventBus;
+    @SuppressWarnings("unused")
     private final CardRepository cardRepository;
     private final GameMode gameMode;
     private final LinkedHashMap<String, PlayerState> playersById;
@@ -50,6 +51,8 @@ public class GameStateManager {
     private final WinConditionEvaluator winConditionEvaluator;
 
     private final Set<String> attackersUsedThisTurn = new HashSet<>();
+    private final Set<String> eliminatedPlayers = new HashSet<>();
+    private final Map<String, Integer> teamControlStreak = new HashMap<>();
 
     private int globalTurnIndex;
     private int roundIndex;
@@ -118,10 +121,6 @@ public class GameStateManager {
         this.globalTurnIndex = 0;
         this.roundIndex = 1;
         this.activePlayerCursor = 0;
-        this.eventSequence = 0;
-        this.status = GameStatus.NOT_STARTED;
-        this.phase = GamePhase.DRAW_RECHARGE;
-    }
         this.eventSequence = 0;
         this.status = GameStatus.NOT_STARTED;
         this.phase = GamePhase.DRAW_RECHARGE;

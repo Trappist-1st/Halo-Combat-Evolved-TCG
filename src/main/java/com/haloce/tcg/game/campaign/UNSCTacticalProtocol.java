@@ -25,6 +25,33 @@ public class UNSCTacticalProtocol {
         return new SynergyResult(1.0, false);
     }
 
+    public boolean checkCombinedArms(String playerId, Lane lane, Object battlefield) {
+        // 检查指定Lane中是否有协同作战组合（炮兵/舰船 + 步兵侦察）
+        if (!(battlefield instanceof com.haloce.tcg.game.BattlefieldState)) {
+            return false;
+        }
+        
+        com.haloce.tcg.game.BattlefieldState bf = (com.haloce.tcg.game.BattlefieldState) battlefield;
+        List<CardInstance> unitsInLane = bf.lane(lane).unitsOf(playerId);
+        
+        if (unitsInLane.isEmpty()) {
+            return false;
+        }
+        
+        // 检查是否有炮兵或舰船单位
+        boolean hasArtilleryOrVessel = unitsInLane.stream()
+            .anyMatch(unit -> {
+                UNSCUnitRole role = roleOf(unit);
+                return role == UNSCUnitRole.MOBILE_ARTILLERY || role == UNSCUnitRole.VESSEL;
+            });
+        
+        // 检查是否有步兵作为侦察单位
+        boolean hasInfantrySpotter = unitsInLane.stream()
+            .anyMatch(unit -> roleOf(unit) == UNSCUnitRole.INFANTRY);
+        
+        return hasArtilleryOrVessel && hasInfantrySpotter;
+    }
+
     public int moraleRechargeMultiplier(List<CardInstance> backlineAllies) {
         if (backlineAllies == null || backlineAllies.isEmpty()) {
             return 1;
@@ -125,6 +152,11 @@ public class UNSCTacticalProtocol {
 
     private String laneKey(String playerId, Lane lane) {
         return playerId + "@" + lane.name();
+    }
+
+    public double getMoraleRechargeMultiplier(String playerId) {
+        // Placeholder - default morale recharge rate
+        return 1.0;
     }
 
     public record SynergyResult(double attackMultiplier, boolean ignoreCover) {

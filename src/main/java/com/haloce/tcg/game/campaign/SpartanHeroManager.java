@@ -2,6 +2,7 @@ package com.haloce.tcg.game.campaign;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -95,5 +96,19 @@ public class SpartanHeroManager {
 
     public boolean canIgnoreElectronicJamming(boolean aiPluginAttached) {
         return aiPluginAttached;
+    }
+
+    public List<String> checkMIARecovery(String playerId, int globalTurnIndex) {
+        // Placeholder for MIA recovery check
+        return List.of();
+    }
+
+    public boolean attemptHijack(String hijackerInstanceId, String targetVehicleInstanceId) {
+        // Default hijack attempt logic
+        return tryVehicleHijack(0.5); // 50% success rate
+    }
+
+    public void enterMIA(String playerId, String instanceId, int globalTurnIndex) {
+        triggerMia(instanceId, globalTurnIndex);
     }
 }

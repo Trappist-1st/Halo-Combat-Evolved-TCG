@@ -50,9 +50,16 @@ public class ForerunnerVacuumEnergyManager {
     }
     
     /**
-     * 记录单位构建费用
+     * 记录单位构建费用 (2 参数版本)
      */
     public void recordUnitCost(String instanceId, int cost) {
+        unitCostByInstanceId.put(instanceId, cost);
+    }
+
+    /**
+     * 记录单位构建费用 (3 参数版本 - 兼容性)
+     */
+    public void recordUnitCost(String playerId, String instanceId, int cost) {
         unitCostByInstanceId.put(instanceId, cost);
     }
     

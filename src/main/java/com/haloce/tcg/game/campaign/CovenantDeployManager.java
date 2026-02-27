@@ -56,4 +56,8 @@ public class CovenantDeployManager {
         }
         return damageByTargetInstance;
     }
+
+    public void checkMassDeploy(String playerId, com.haloce.tcg.game.BattlefieldState battlefield, int globalTurnIndex) {
+        // Placeholder for mass deploy check
+    }
 }

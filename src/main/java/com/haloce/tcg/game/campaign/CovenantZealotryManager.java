@@ -97,4 +97,8 @@ public class CovenantZealotryManager {
         }
         return "OTHER";
     }
+
+    public void recordDeployment(String playerId, String cardDefId) {
+        // Placeholder for future zealotry tracking
+    }
 }

@@ -25,4 +25,13 @@ public class UNSCSalvageManager {
     public int pendingCore(String vehicleCardId) {
         return recoveredCoreByVehicleType.getOrDefault(vehicleCardId, 0);
     }
+
+    public void processRefitCooldowns(String playerId, int globalTurnIndex) {
+        // Placeholder for processing refit cooldowns
+    }
+
+    public void recordVehicleDestruction(String playerId, String instanceId) {
+        // Extract vehicle type from instance ID or use a simplified approach
+        recoverVehicleCore(instanceId);
+    }
 }

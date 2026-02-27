@@ -1,6 +1,5 @@
 package com.haloce.tcg.game.handlers;
 
-import com.haloce.tcg.card.runtime.CardInstance;
 import com.haloce.tcg.core.event.EventBus;
 import com.haloce.tcg.core.event.EventType;
 import com.haloce.tcg.core.event.GameEvent;

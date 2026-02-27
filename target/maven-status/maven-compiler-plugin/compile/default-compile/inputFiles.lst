@@ -17,6 +17,7 @@ D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\card\model\VesselSe
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\card\model\VesselStats.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\card\runtime\CardInstance.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\card\runtime\TokenFactory.java
+D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\cli\GameCLI.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\combat\CombatStateStore.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\combat\DamageContext.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\combat\DamageResolver.java
@@ -60,6 +61,13 @@ D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\Dogma
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\FactoryLogic.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\FloodInfectionManager.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\ForerunnerAutomationManager.java
+D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\ForerunnerComposerManager.java
+D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\ForerunnerHaloArrayManager.java
+D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\ForerunnerHardlightWeaponManager.java
+D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\ForerunnerPrometheanManager.java
+D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\ForerunnerSentinelNetworkManager.java
+D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\ForerunnerSlipspaceManager.java
+D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\ForerunnerVacuumEnergyManager.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\HangarManager.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\LaneLayer.java
 D:\A\1 IDEAprojects_rep\Halo CE\src\main\java\com\haloce\tcg\game\campaign\MacTier.java

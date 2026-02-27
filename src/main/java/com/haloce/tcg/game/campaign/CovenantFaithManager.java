@@ -36,4 +36,12 @@ public class CovenantFaithManager {
     public boolean isOverheatSuppressedThisTurn(String playerId, int globalTurnIndex) {
         return antiOverheatTurnByPlayer.getOrDefault(playerId, -1) == globalTurnIndex;
     }
+
+    public void checkRitualOverdrive(String playerId, int globalTurnIndex) {
+        // Placeholder for checking ritual overdrive effects
+    }
+
+    public void recordKill(String playerId, String cardDefId) {
+        onEnemyKilled(playerId);
+    }
 }

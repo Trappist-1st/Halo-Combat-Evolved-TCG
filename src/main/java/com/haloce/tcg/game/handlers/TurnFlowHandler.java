@@ -86,6 +86,13 @@ public class TurnFlowHandler {
 
         // Campaign integration: UNSC Hangar queue processing
         campaignManager.unscDropPod().processHangarQueue(activePlayerId, globalTurnIndex);
+
+        // Campaign integration: Forerunner power level increment
+        campaignManager.forerunnerVacuumEnergy().incrementPowerLevel(activePlayerId);
+        emit(EventType.FORERUNNER_POWER_LEVEL_INCREASED, activePlayerId, globalTurnIndex, roundIndex, activePlayerId, eventSequence, Map.of(
+                "playerId", activePlayerId,
+                "newPowerLevel", campaignManager.forerunnerVacuumEnergy().getPowerLevel(activePlayerId)
+        ));
     }
 
     public void onTurnEnd(
@@ -102,13 +109,35 @@ public class TurnFlowHandler {
 
         // Campaign integration: UNSC Salvage refit check
         campaignManager.unscSalvage().processRefitCooldowns(endingPlayerId, globalTurnIndex);
+
+        // Campaign integration: Forerunner Sentinel auto-repair queue processing
+        List<String> repairedSentinels = campaignManager.forerunnerSentinelNetwork().processRepairQueue(endingPlayerId, globalTurnIndex);
+        for (String sentinelId : repairedSentinels) {
+            emit(EventType.SENTINEL_AUTO_REPAIRED, endingPlayerId, globalTurnIndex, roundIndex, endingPlayerId, eventSequence, Map.of(
+                    "sentinelInstanceId", sentinelId
+            ));
+        }
+
+        // Campaign integration: Forerunner Composer upgrade progress check
+        List<String> completedUpgrades = campaignManager.forerunnerComposer().checkUpgradeCompletion(endingPlayerId, globalTurnIndex);
+        for (String sentinelId : completedUpgrades) {
+            emit(EventType.SENTINEL_UPGRADE_COMPLETED, endingPlayerId, globalTurnIndex, roundIndex, endingPlayerId, eventSequence, Map.of(
+                    "sentinelInstanceId", sentinelId
+            ));
+        }
     }
 
     public void onRoundStart(int roundIndex, String activePlayerId, int globalTurnIndex, long eventSequence) {
         emit(EventType.ROUND_STARTED, activePlayerId, globalTurnIndex, roundIndex, activePlayerId, eventSequence, Map.of("roundIndex", roundIndex));
 
-        // Campaign integration: Forerunner automation
-        // Process automated Sentinel spawns if any
+        // Campaign integration: Forerunner Sentinel Network manufactory token production
+        List<String> manufacturedSentinels = campaignManager.forerunnerSentinelNetwork().produceManufactoryTokens(activePlayerId, globalTurnIndex);
+        for (String sentinelId : manufacturedSentinels) {
+            emit(EventType.SENTINEL_MANUFACTURED, activePlayerId, globalTurnIndex, roundIndex, activePlayerId, eventSequence, Map.of(
+                    "sentinelInstanceId", sentinelId,
+                    "playerId", activePlayerId
+            ));
+        }
     }
 
     public void onRoundEnd(String endingPlayerId, int roundIndex, int globalTurnIndex, long eventSequence) {

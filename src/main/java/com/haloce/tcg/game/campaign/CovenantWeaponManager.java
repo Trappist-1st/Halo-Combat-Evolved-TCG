@@ -28,4 +28,9 @@ public class CovenantWeaponManager {
         double clamped = Math.max(0.0, Math.min(1.0, overheatChance));
         return random.nextDouble() < clamped;
     }
+
+    public boolean hasOverwhelmingFirepower(String playerId) {
+        // Placeholder - could track player state for firepower bonus
+        return false;
+    }
 }

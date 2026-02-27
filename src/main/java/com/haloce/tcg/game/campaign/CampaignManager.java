@@ -1,11 +1,9 @@
 package com.haloce.tcg.game.campaign;
 
-import com.haloce.tcg.card.runtime.CardInstance;
 import com.haloce.tcg.game.GameStateManager;
 import com.haloce.tcg.game.Lane;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,8 +13,10 @@ import java.util.Map;
 public class CampaignManager {
     private final GameStateManager game;
     private final PopulationManager p1Pop;
+    @SuppressWarnings("unused")
     private final PopulationManager p2Pop;
     private final Map<String, FactoryLogic> factories = new HashMap<>(); // Key: sourceInstanceId
+    @SuppressWarnings("unused")
     private final OrbitalManager orbital = new OrbitalManager();
     private final CovenantDeployManager covenantDeployManager = new CovenantDeployManager();
     private final CovenantZealotryManager covenantZealotryManager = new CovenantZealotryManager();
@@ -36,6 +36,7 @@ public class CampaignManager {
     private final ForerunnerHaloArrayManager forerunnerHaloArray = new ForerunnerHaloArrayManager();
     private final ForerunnerSlipspaceManager forerunnerSlipspace = new ForerunnerSlipspaceManager();
     private final ForerunnerHardlightWeaponManager forerunnerHardlight = new ForerunnerHardlightWeaponManager();
+    @SuppressWarnings("unused")
     private final ForerunnerComposerManager forerunnerComposer = new ForerunnerComposerManager();
 
     private int turnLimit;

@@ -24,7 +24,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * In-process gameplay tests (no network). Run with: mvn test
@@ -84,7 +83,7 @@ class GamePlayTest {
                 .findFirst()
                 .orElse(hand.get(0));
 
-        game.deployUnitFromHand("P1", toDeploy.instanceId(), Lane.ALPHA, GameRow.FRONT);
+        game.deployUnitFromHand("P1", toDeploy.instanceId(), Lane.ALPHA, GameRow.FRONTLINE);
         game.advancePhase();
         assertEquals(GamePhase.SKIRMISH, game.phase());
 

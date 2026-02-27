@@ -51,4 +51,8 @@ public class CovenantOrbitalDominanceManager {
     public boolean isShipDisabled(String targetShipInstanceId) {
         return boardingTokensByShip.getOrDefault(targetShipInstanceId, 0) > 0;
     }
+
+    public void processGlassingMarks(String playerId, int globalTurnIndex) {
+        // Placeholder for processing glassing marks
+    }
 }

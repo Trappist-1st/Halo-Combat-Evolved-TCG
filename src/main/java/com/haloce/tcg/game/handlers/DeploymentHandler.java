@@ -24,6 +24,7 @@ import java.util.Map;
  */
 public class DeploymentHandler {
     private final EventBus eventBus;
+    @SuppressWarnings("unused")
     private final CardRepository cardRepository;
     private final BattlefieldState battlefield;
     private final InMemoryCombatStateStore combatStateStore;
@@ -99,6 +100,20 @@ public class DeploymentHandler {
 
         // Campaign integration: Covenant Zealotry tracking
         campaignManager.covenantZealotry().recordDeployment(playerId, deployed.definition().id());
+
+        // Campaign integration: Forerunner unit cost tracking for matter reconfiguration
+        if (HandlerUtils.hasTag(deployed, "FORERUNNER")) {
+            campaignManager.forerunnerVacuumEnergy().recordUnitCost(
+                playerId, deployed.instanceId(), supplyCost
+            );
+        }
+
+        // Campaign integration: Forerunner Sentinel manufactory binding
+        if (deployed.definition().id().contains("SENTINEL") && deployed.definition().cardType() == CardType.TOKEN) {
+            campaignManager.forerunnerSentinelNetwork().bindSentinelToManufactory(
+                deployed.instanceId(), playerId, lane
+            );
+        }
 
         resolveOnDeployTriggers(deployed, lane, playerId, globalTurnIndex, roundIndex, activePlayerId, eventSequence);
     }

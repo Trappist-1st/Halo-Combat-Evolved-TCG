@@ -49,7 +49,7 @@ public class ForerunnerSentinelNetworkManager {
      * 移除制造厂（被摧毁时）
      */
     public void removeManufactory(String instanceId) {
-        Lane lane = sentinelManufactoryByInstance.remove(instanceId);
+        sentinelManufactoryByInstance.remove(instanceId);
         Set<String> sentinels = commandNodeToSentinels.remove(instanceId);
         
         // 所有归属的哨兵失去指挥，命中率下降50%
@@ -107,6 +107,18 @@ public class ForerunnerSentinelNetworkManager {
         repairQueueByLane.put(lane, new ArrayList<>());
         return repaired;
     }
+
+    /**
+     * 回合结束时自动修复 (重载版本 - 基于玩家和回合)
+     */
+    public List<String> processRepairQueue(String playerId, int globalTurnIndex) {
+        // Process all lanes for this player
+        List<String> allRepaired = new ArrayList<>();
+        for (Lane lane : Lane.values()) {
+            allRepaired.addAll(processRepairQueue(lane));
+        }
+        return allRepaired;
+    }
     
     /**
      * 群体智能：计算哨兵攻击力加成
@@ -163,5 +175,40 @@ public class ForerunnerSentinelNetworkManager {
     public boolean hasBeamTracking(String sentinelId) {
         // 构造者哨兵拥有光束追踪
         return sentinelToManufactory.containsKey(sentinelId);
+    }
+
+    /**
+     * 绑定哨兵到制造厂
+     */
+    public void bindSentinelToManufactory(String instanceId, String playerId, Lane lane) {
+        // 查找该 lane 的制造厂
+        String manufactoryId = findManufactoryInLane(lane);
+        if (manufactoryId != null) {
+            sentinelToManufactory.put(instanceId, manufactoryId);
+            commandNodeToSentinels.computeIfAbsent(manufactoryId, k -> new HashSet<>()).add(instanceId);
+        }
+    }
+
+    /**
+     * 生成制造厂的哨兵 Token
+     */
+    public List<String> produceManufactoryTokens(String playerId, int globalTurnIndex) {
+        List<String> produced = new ArrayList<>();
+        for (Map.Entry<String, Lane> entry : sentinelManufactoryByInstance.entrySet()) {
+            produced.addAll(produceTokens(entry.getKey(), 2));
+        }
+        return produced;
+    }
+
+    /**
+     * 查找指定 Lane 中的制造厂
+     */
+    private String findManufactoryInLane(Lane lane) {
+        for (Map.Entry<String, Lane> entry : sentinelManufactoryByInstance.entrySet()) {
+            if (entry.getValue() == lane) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 }

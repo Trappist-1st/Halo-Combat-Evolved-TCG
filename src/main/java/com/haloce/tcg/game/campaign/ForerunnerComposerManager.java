@@ -1,6 +1,7 @@
 package com.haloce.tcg.game.campaign;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -212,5 +213,10 @@ public class ForerunnerComposerManager {
         biologicalDataByPlayer.put(playerId, current - cost);
         
         return true;
+    }
+
+    public List<String> checkUpgradeCompletion(String playerId, int globalTurnIndex) {
+        // Placeholder for checking upgrade completion
+        return List.of();
     }
 }
